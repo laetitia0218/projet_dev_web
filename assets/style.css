@@ -1,0 +1,139 @@
+
+:root {
+    --fond: #eef2f6;
+    --carte: #ffffff;
+    --texte: #1d2733;
+    --texte-doux: #5a6572;
+    --accent: #2355a0;
+    --accent-fonce: #183d75;
+    --bordure: #c9d2dc;
+    --erreur-fond: #fdecec;
+    --erreur-texte: #a3222a;
+}
+
+/* box-sizing : la taille d'un élément inclut son padding et sa bordure */
+* {
+    box-sizing: border-box;
+}
+
+/* Le body centre la carte au milieu de l'écran grâce à Flexbox */
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;   /* centrage horizontal */
+    align-items: center;       /* centrage vertical */
+    padding: 1rem;
+    background: var(--fond);
+    color: var(--texte);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+}
+
+/* La carte blanche qui contient la page */
+main {
+    width: 100%;
+    max-width: 24rem;          /* largeur limitée : lignes courtes et lisibles */
+    background: var(--carte);
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(29, 39, 51, 0.08);
+}
+
+h1 {
+    margin: 0 0 1.5rem;
+    font-size: 1.75rem;
+    text-align: center;
+}
+
+/* Le formulaire empile ses éléments verticalement */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-top: 0.75rem;
+}
+
+input {
+    padding: 0.7rem 0.8rem;
+    font-size: 1rem;
+    border: 1px solid var(--bordure);
+    border-radius: 6px;
+    transition: border-color 0.15s;
+}
+
+input:hover {
+    border-color: var(--texte-doux);
+}
+
+/* Contour bien visible pour la navigation au clavier (accessibilité) */
+input:focus-visible,
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+    border-color: var(--accent);
+}
+
+button {
+    margin-top: 1.5rem;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--accent);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+button:hover {
+    background: var(--accent-fonce);
+}
+
+/* Message d'erreur (le <p role="alert"> de login.php) : feedback immédiat */
+[role="alert"] {
+    margin: 0 0 1rem;
+    padding: 0.75rem 1rem;
+    background: var(--erreur-fond);
+    color: var(--erreur-texte);
+    border-left: 4px solid var(--erreur-texte);
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+/* Page d'accueil : texte centré et lien de déconnexion en forme de bouton */
+main p {
+    text-align: center;
+    color: var(--texte-doux);
+}
+
+main > a {
+    display: block;
+    margin-top: 1.5rem;
+    padding: 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    border-radius: 6px;
+}
+
+main > a:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* Petits écrans (smartphone) : on réduit les marges */
+@media (max-width: 480px) {
+    main {
+        padding: 2rem 1.25rem;
+    }
+}
